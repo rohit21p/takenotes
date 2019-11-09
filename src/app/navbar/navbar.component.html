@@ -1,1 +1,39 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark nav-container">
+    <div class="nav-items">
+        <a class="navbar-brand" href="#">Take Notes</a>
+        <a class="nav-link" href="#">Notes</a>
+    </div>
+    <div class="action">
+        <a href="#" data-toggle="modal" data-target="#myModal" *ngIf="isLoggedIn">Logout</a>
+        <a href="#" data-toggle="modal" data-target="#myModal" *ngIf="!isLoogedIn">Log-in</a>
+    </div>
+</nav>
+    
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="new-user">
+                    <label for="text">Email:</label>
+                    <input type="text" class="email" name="email" [(ngModel)] = "email">
+                    <label for="text">Password:</label>
+                    <input type="password" class="password" name="password" [(ngModel)] = "password">
+                </form>
+                <div class="action">
+                    <button *ngIf="isNewUser" class="btn btn-success" (click)="log_in()" data-dismiss="modal">Register</button>
+                    <button *ngIf="isRegUser" class="btn btn-success" (click)="log_in()" data-dismiss="modal">Sign-in</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        
+            <!-- Modal footer -->
+            <div class="modal-footer" style="display: flex;flex-flow: column;justify-content: center;">
+                <p *ngIf="isRegUser">Do not have a account? <a (click)="toggleUser()">Click Here!</a></p>
+                <p *ngIf="isNewUser">Already Have an account? <a (click)="toggleUser()">Click Here!</a></p>
+                <p *ngIf="isRegUser">Forgot Password? <a (click)="forgotpassword()">Click Here!</a></p>
+            </div>
+        
+        </div>
+    </div>
+</div>
