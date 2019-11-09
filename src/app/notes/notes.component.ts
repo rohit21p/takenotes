@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-notes',
@@ -64,7 +65,8 @@ export class NotesComponent implements OnInit {
 
   bin = false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              private http: HttpClient) { }
 
   ngOnInit() {
     if (this.route.snapshot.url[0].path === 'bin') {
@@ -72,6 +74,11 @@ export class NotesComponent implements OnInit {
     } else {
       this.bin = false;
     }
+    this.http.get('http://localhost:3000/notes', {
+      withCredentials: true
+    }).subscribe((data: any)=> {
+      this.notes = data.notes;
+    });
   }
 
 }

@@ -18,9 +18,10 @@
     border-radius: 10px;
     display: flex;
     flex-flow: column;
-    width: 15%;
+    max-width: 30%;
     padding: 2%;
     margin: 2%;
+    overflow: auto;
 }
 
 small {
