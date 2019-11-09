@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+declare let $: any;
+
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
@@ -10,6 +12,7 @@ export class AddNoteComponent implements OnInit {
 
   title;
   desc;
+  msg;
 
   constructor(private http: HttpClient) { }
 
@@ -23,9 +26,21 @@ export class AddNoteComponent implements OnInit {
      desc: this.desc 
     }, {
       withCredentials: true
-    }).subscribe(data=> {
-      console.log(data);
-    })
+    }).subscribe((data: any)=> {
+      if (data.inserted === "Not Logged in") {
+        this.msg = 'Log-in First!';
+        $('#status').modal('show');
+      } else if (data.inserted) {
+        this.msg = 'Note Saved!';
+        $('#status').modal('show');
+      } else {
+        this.msg = 'Some Error Occured.';
+        $('#status').modal('show');
+      }
+    }, (err) => {
+      this.msg = 'Some Error Occured.';
+      $('#status').modal('show');
+    });
   }
 
 }
