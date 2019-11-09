@@ -1,11 +1,11 @@
 <div class="notes-container">
-    <div *ngIf="notes && !bin" class="notes-group">
+    <div *ngIf="notes && !bin" class="notes-group" data-simplebar>
         <div *ngFor="let note of notes" class="note" data-simplebar>
             <h6>{{note.title}}</h6>
             <p>{{note.desc}}</p>
         </div>
     </div>
-    <div *ngIf="dnotes && bin" class="notes-group">
+    <div *ngIf="dnotes && bin" class="notes-group" data-simplebar>
         <div *ngFor="let note of dnotes" class="note">
             <h6>{{note.title}}</h6>
             <p>{{note.desc}}</p>

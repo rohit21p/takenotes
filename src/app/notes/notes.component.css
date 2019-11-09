@@ -11,6 +11,7 @@
 .notes-group {
     display: flex;
     flex-flow: row wrap;
+    overflow: auto;
 }
 
 .note {
@@ -26,4 +27,9 @@
 
 small {
     margin: 2%;
+}
+
+h6 {
+    padding-bottom: 5px;
+    border-bottom: 1px solid grey;
 }
