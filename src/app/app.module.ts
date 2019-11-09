@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AddNoteComponent } from './add-note/add-note.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddNoteComponent
   ],
   imports: [
     BrowserModule,
