@@ -1,8 +1,8 @@
 <div class="add-container">
     <div class="note">
-        <input type="text" placeholder="title">
-        <textarea name="" id="" cols="30" rows="10" placeholder="note"></textarea>
-        <button class="btn btn-primary">Save</button>
+        <input type="text" placeholder="title" name="title" [(ngModel)]="title">
+        <textarea name="" id="" cols="30" rows="10" placeholder="note"  name="desc" [(ngModel)]="desc"></textarea>
+        <button class="btn btn-primary" (click)="create()">Save</button>
     </div>
 </div>
 
