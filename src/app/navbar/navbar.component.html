@@ -5,7 +5,7 @@
         <a class="nav-link" href="#" routerLink="/bin">Bin</a>
     </div>
     <div class="action">
-        <a href="#" data-toggle="modal" data-target="#status" *ngIf="isLoggedIn" (click) = "logout()">Logout</a>
+        <a href="#" *ngIf="isLoggedIn" (click) = "logout()">Logout</a>
         <a href="#" data-toggle="modal" data-target="#myModal" *ngIf="!isLoggedIn">Log-in</a>
     </div>
 </nav>
@@ -35,6 +35,14 @@
                 <p *ngIf="isRegUser">Forgot Password? <a (click)="forgotpassword()">Click Here!</a></p>
             </div>
         
+        </div>
+    </div>
+</div>
+
+<div id="loginstatus" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content modal-msg" style="justify-content: center; align-items: center;padding:10px">
+        <h5>{{ msg }}</h5>
         </div>
     </div>
 </div>
