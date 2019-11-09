@@ -7,6 +7,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotesComponent implements OnInit {
 
+  notes = [
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit() {

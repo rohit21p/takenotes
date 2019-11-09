@@ -1,1 +1,8 @@
-<p>notes works!</p>
+<div class="notes-container">
+    <div *ngIf="notes" class="notes-group">
+        <div *ngFor="let note of notes" class="note">
+            <h6>note.title</h6>
+            <p>note.desc</p>
+        </div>
+    </div>
+</div>
