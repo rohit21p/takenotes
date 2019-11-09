@@ -59,6 +59,7 @@ export class NotesComponent implements OnInit {
         $('#fetchstatus').modal('show');
       } else if (data.success) {
         this.notes = data.notes;
+        this.notes = [...this.notes, ...data.notes];
       } else {
         this.msg = 'Some Error Occured.';
         $('#fetchstatus').modal('show');

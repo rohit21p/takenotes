@@ -9,9 +9,9 @@
 }
 
 .notes-group {
-    display: flex;
-    flex-flow: row wrap;
-    overflow: auto;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 25% 25% 25% 25%;
 }
 
 .note {
@@ -19,10 +19,8 @@
     border-radius: 10px;
     display: flex;
     flex-flow: column;
-    max-width: 30%;
-    padding: 2%;
+    padding: 5%;
     margin: 2%;
-    overflow: auto;
 }
 
 small {
@@ -32,4 +30,13 @@ small {
 h6 {
     padding-bottom: 5px;
     border-bottom: 1px solid grey;
+}
+
+.simplebar-content {
+    padding: 0px;
+}
+
+.cover {
+    height: 80%;
+    overflow: auto;
 }
