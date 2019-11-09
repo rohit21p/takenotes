@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+declare let $: any;
+
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -64,6 +66,7 @@ export class NotesComponent implements OnInit {
   ];
 
   bin = false;
+  msg: any;
 
   constructor(private route: ActivatedRoute,
               private http: HttpClient) { }
@@ -77,7 +80,18 @@ export class NotesComponent implements OnInit {
     this.http.get('http://localhost:3000/notes', {
       withCredentials: true
     }).subscribe((data: any)=> {
-      this.notes = data.notes;
+      if (data.success === 'Not Logged in') {
+        this.msg = 'Log-in First';
+        $('#fetchstatus').modal('show');
+      } else if (data.success) {
+        this.notes = data.notes;
+      } else {
+        this.msg = 'Some Error Occured.';
+        $('#fetchstatus').modal('show');
+      }
+    }, (err) => {
+      this.msg = 'Some Error Occured.';
+      $('#fetchstatus').modal('show');
     });
   }
 
