@@ -1,7 +1,11 @@
 .notes-container {
     height: 100vh;
     padding: 5%;
+    padding-top: 84px;
     background: rgb(233, 232, 238);
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
 }
 
 .notes-group {
@@ -16,5 +20,9 @@
     flex-flow: column;
     width: 15%;
     padding: 2%;
+    margin: 2%;
+}
+
+small {
     margin: 2%;
 }

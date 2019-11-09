@@ -1,8 +1,15 @@
 <div class="notes-container">
-    <div *ngIf="notes" class="notes-group">
+    <div *ngIf="notes && !bin" class="notes-group">
         <div *ngFor="let note of notes" class="note">
             <h6>note.title</h6>
             <p>note.desc</p>
         </div>
     </div>
+    <div *ngIf="dnotes && bin" class="notes-group">
+        <div *ngFor="let note of dnotes" class="note">
+            <h6>note.title</h6>
+            <p>note.desc</p>
+        </div>
+    </div>
+    <small *ngIf="bin">Notes in bin stays untill you close the application.</small>
 </div>

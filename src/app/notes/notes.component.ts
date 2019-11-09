@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-notes',
@@ -34,9 +35,43 @@ export class NotesComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  dnotes = [
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    },
+    {
+      title: 'Rohit Panjwani',
+      desc: 'is a good man.'
+    }
+  ];
+
+  bin = false;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    if (this.route.snapshot.url[0].path === 'bin') {
+      this.bin = true;
+    } else {
+      this.bin = false;
+    }
   }
 
 }
