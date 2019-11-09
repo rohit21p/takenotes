@@ -30,8 +30,14 @@ export class AddNoteComponent implements OnInit {
       if (data.inserted === "Not Logged in") {
         this.msg = 'Log-in First!';
         $('#status').modal('show');
-      } else if (data.inserted) {
+      } else if (data.inserted === true) {
         this.msg = 'Note Saved!';
+        $('#status').modal('show');
+      } else if (data.inserted ===  'no title') {
+        this.msg = 'Please give a title to your note.';
+        $('#status').modal('show');
+      } else if (data.inserted ===  'no note') {
+        this.msg = 'Please give a description to your title.';
         $('#status').modal('show');
       } else {
         this.msg = 'Some Error Occured.';
