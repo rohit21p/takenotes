@@ -60,7 +60,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.http.post('http://localhost:3000/logout', {
+    this.http.get('http://localhost:3000/logout', {
         withCredentials: true
       }).subscribe((data: any) => {
         if (!data.loggedIn) {
