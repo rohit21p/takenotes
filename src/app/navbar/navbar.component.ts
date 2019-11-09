@@ -19,6 +19,13 @@ export class NavbarComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    this.http.get('http://localhost:3000/isLoggedIn', {
+      withCredentials: true
+    }).subscribe((data: any)=>{
+      if (data.LoggedIn) {
+        this.isLoggedIn = true;
+      }
+    })
   }
 
   toggleUser() {
