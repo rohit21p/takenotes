@@ -5,8 +5,8 @@
         <a class="nav-link" href="#" routerLink="/bin">Bin</a>
     </div>
     <div class="action">
-        <a href="#" data-toggle="modal" data-target="#myModal" *ngIf="isLoggedIn">Logout</a>
-        <a href="#" data-toggle="modal" data-target="#myModal" *ngIf="!isLoogedIn">Log-in</a>
+        <a href="#" data-toggle="modal" data-target="#status" *ngIf="isLoggedIn" (click) = "logout()">Logout</a>
+        <a href="#" data-toggle="modal" data-target="#myModal" *ngIf="!isLoggedIn">Log-in</a>
     </div>
 </nav>
     
