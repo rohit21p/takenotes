@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { NotesComponent } from './notes/notes.component';
-import { BinComponent } from './bin/bin.component';
 
 const routes: Route[] = [
   {
@@ -30,8 +29,7 @@ const routes: Route[] = [
     AppComponent,
     NavbarComponent,
     AddNoteComponent,
-    NotesComponent,
-    BinComponent
+    NotesComponent
   ],
   imports: [
     BrowserModule,
