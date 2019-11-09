@@ -11,33 +11,7 @@ declare let $: any;
 })
 export class NotesComponent implements OnInit {
 
-  notes = [
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    }
-  ];
-
+  notes;
   dnotes = [
     {
       title: 'Rohit Panjwani',
