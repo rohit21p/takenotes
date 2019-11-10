@@ -55,7 +55,7 @@ export class AddNoteComponent implements OnInit {
     console.log(c);
     $('input').css('background-color', c);
     $('textarea').css('background-color', c);
-    if (c!='white'&&c!='yellow') {
+    if (c!='#ffc107'&&c!='#f8f9fa') {
       $('input').css('color', 'white');
       $('textarea').css('color', 'white');
     } else {

@@ -3,7 +3,7 @@
         <h5 *ngIf="pnotes.length > 0">Pinned: </h5>
         <div class="notes-group">
             <div *ngFor="let note of pnotes; let i = index" [ngStyle]="{ 'background-color': note.color,
-            'color': note.color == 'yellow' ? 'black' : note.color == 'white' ? 'black' : 'white'}" class="note" data-simplebar>
+            'color': note.color == '#ffc107' ? 'black' : note.color == '#f8f9fa' ? 'black' : 'white'}" class="note" data-simplebar>
                 <div class="note-head">
                     <h6>{{note.title}}</h6>
                     <div class="action">
@@ -20,7 +20,7 @@
         <h5 *ngIf="pnotes.length > 0">Unpinned: </h5>
         <div class="notes-group">
             <div *ngFor="let note of unotes; let i = index" [ngStyle]="{ 'background-color': note.color,
-            'color': note.color == 'yellow' ? 'black' : note.color == 'white' ? 'black' : 'white'}" class="note" data-simplebar>
+            'color': note.color == '#ffc107' ? 'black' : note.color == '#f8f9fa' ? 'black' : 'white'}" class="note" data-simplebar>
                 <div class="note-head">
                     <h6>{{note.title}}</h6>
                     <div class="action">
@@ -35,7 +35,7 @@
     </div>
     <div *ngIf="dnotes && bin" class="notes-group">
         <div *ngFor="let note of dnotes; let i = index" [ngStyle]="{ 'background-color': note.color,
-        'color': note.color == 'yellow' ? 'black' : note.color == 'white' ? 'black' : 'white'}" class="note" data-simplebar>
+        'color': note.color == '#ffc107' ? 'black' : note.color == '#f8f9fa' ? 'black' : 'white'}" class="note" data-simplebar>
                 <div class="note-head">
                     <h6>{{note.title}}</h6>
                     <div class="action">
