@@ -110,10 +110,6 @@ export class NotesComponent implements OnInit {
     }); 
   }
 
-  edit() {
-
-  }
-
   restore(note, index) {
     this.dnotes.splice(index, 1);
     this.http.get('http://localhost:3000/restore/' + note._id, {

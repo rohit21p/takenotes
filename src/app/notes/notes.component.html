@@ -8,7 +8,6 @@
                     <h6>{{note.title}}</h6>
                     <div class="action">
                         <i (click)="pin(note, i); note.pin = !note.pin" class="fa fa-thumb-tack" aria-hidden="true"></i>
-                        <i (click)="edit()" class="fa fa-pencil" aria-hidden="true"></i>
                         <i (click)="delete(note, i, 0)" class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </div>
@@ -25,7 +24,6 @@
                     <h6>{{note.title}}</h6>
                     <div class="action">
                         <i (click)="pin(note, i); note.pin = !note.pin" class="fa fa-thumb-tack" aria-hidden="true"></i>
-                        <i (click)="edit()" class="fa fa-pencil" aria-hidden="true"></i>
                         <i (click)="delete(note, i, 1)" class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </div>
