@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { notEqual } from 'assert';
 
 declare let $: any;
 
@@ -11,7 +12,8 @@ declare let $: any;
 })
 export class NotesComponent implements OnInit {
 
-  notes;
+  pnotes = [];
+  unotes = [];
   dnotes = [
     {
       title: 'Rohit Panjwani',
@@ -58,8 +60,15 @@ export class NotesComponent implements OnInit {
         this.msg = 'Log-in First';
         $('#fetchstatus').modal('show');
       } else if (data.success) {
-        this.notes = data.notes;
-        this.notes = [...this.notes, ...data.notes];
+        data.notes.forEach(element => {
+          if(element.pin) {
+            this.pnotes.push(element);
+          } else {
+            this.unotes.push(element);
+          }
+        });
+        console.log(this.pnotes, "p")
+        console.log(this.unotes, "u")
       } else {
         this.msg = 'Some Error Occured.';
         $('#fetchstatus').modal('show');
@@ -68,6 +77,40 @@ export class NotesComponent implements OnInit {
       this.msg = 'Some Error Occured.';
       $('#fetchstatus').modal('show');
     });
+  }
+
+  pin(note, index) {
+    if (note.pin) {
+      this.pnotes.splice(index, 1);
+      this.unotes.push(note);
+      this.http.get('http://localhost:3000/unpin/' + note._id, {
+        withCredentials: true
+      }).subscribe((data: any)=> {
+        console.log(data);
+      }, (err) => {
+        this.msg = 'Some Error Occured.';
+        $('#fetchstatus').modal('show');
+      }); 
+    } else {
+      this.unotes.splice(index, 1);
+      this.pnotes.push(note);
+      this.http.get('http://localhost:3000/pin/' + note._id, {
+        withCredentials: true
+      }).subscribe((data: any)=> {
+        console.log(data);
+      }, (err) => {
+        this.msg = 'Some Error Occured.';
+        $('#fetchstatus').modal('show');
+      }); 
+    }
+  }
+
+  delete() {
+
+  }
+
+  edit() {
+
   }
 
 }

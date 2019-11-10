@@ -1,8 +1,34 @@
 <div class="notes-container" data-simplebar>
-    <div *ngIf="notes && !bin" class="notes-group">
-        <div *ngFor="let note of notes" class="note" data-simplebar>
-            <h6>{{note.title}}</h6>
-            <p>{{note.desc}}</p>
+    <div class="ncover">
+        <h5 *ngIf="pnotes.length > 0">Pinned: </h5>
+        <div *ngIf="pnotes && !bin" class="notes-group">
+            <div *ngFor="let note of pnotes; let i = index" class="note" data-simplebar>
+                <div class="note-head">
+                    <h6>{{note.title}}</h6>
+                    <div class="action">
+                        <i (click)="pin(note, i); note.pin = !note.pin" class="fa fa-thumb-tack" aria-hidden="true"></i>
+                        <i (click)="edit()" class="fa fa-pencil" aria-hidden="true"></i>
+                        <i (click)="delete()" class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <p>{{note.desc}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="ncover">
+        <h5 *ngIf="pnotes.length > 0">Unpinned: </h5>
+        <div *ngIf="unotes && !bin" class="notes-group">
+            <div *ngFor="let note of unotes; let i = index" class="note" data-simplebar>
+                <div class="note-head">
+                    <h6>{{note.title}}</h6>
+                    <div class="action">
+                        <i (click)="pin(note, i); note.pin = !note.pin" class="fa fa-thumb-tack" aria-hidden="true"></i>
+                        <i (click)="edit()" class="fa fa-pencil" aria-hidden="true"></i>
+                        <i (click)="delete()" class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <p>{{note.desc}}</p>
+            </div>
         </div>
     </div>
     <div *ngIf="dnotes && bin" class="notes-group">

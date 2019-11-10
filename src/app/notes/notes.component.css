@@ -40,3 +40,16 @@ h6 {
     height: 80%;
     overflow: auto;
 }
+
+.fa {
+    margin: 0px 10px;
+}
+
+.note-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ncover {
+    margin: 15px;
+}
