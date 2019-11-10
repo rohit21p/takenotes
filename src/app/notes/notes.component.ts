@@ -28,7 +28,7 @@ export class NotesComponent implements OnInit {
     } else {
       this.bin = false;
     }
-    this.http.get('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/notes', {
+    this.http.get('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/getnotes', {
       withCredentials: true
     }).subscribe((data: any)=> {
       if (data.success === 'Not Logged in') {
