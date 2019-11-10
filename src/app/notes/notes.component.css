@@ -15,7 +15,6 @@
 }
 
 .note {
-    background-color: white;
     border-radius: 10px;
     display: flex;
     flex-flow: column;
