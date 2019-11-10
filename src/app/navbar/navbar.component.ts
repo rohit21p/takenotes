@@ -17,6 +17,8 @@ export class NavbarComponent implements OnInit {
   email: any;
   password: any;
   msg: any;
+  forgetpass = 0;
+  otp: any;
 
   constructor(private http: HttpClient,
               private router: Router) { }
@@ -96,6 +98,42 @@ export class NavbarComponent implements OnInit {
         this.isLoggedIn = false;
       });
     this.router.navigate(['/']);
+  }
+
+  requestpass() {
+    this.forgetpass = 2;
+    this.http.post('http://localhost:3000/reset', JSON.stringify({
+      email: this.email
+    }), {
+      withCredentials: true
+    }).subscribe((data: any) => {
+      console.log(data);
+    }, (err) => {
+      this.msg = 'Cannot connect to server.';
+      $('#loginstatus').modal('show');
+    })
+  }
+
+  newp() {
+    this.http.post('http://localhost:3000/newpass', JSON.stringify({
+      otp: this.otp,
+      password: this.password
+    }),{
+      withCredentials: true
+    }).subscribe((data: any) => {
+      console.log(data);
+      if(data.status === 'Password Changed') {
+        this.msg = 'Password Changed.'
+        $('#loginstatus').modal('show');
+        this.forgetpass = 0;
+      } else if (data.status === 'Wrong or expired otp') {
+        this.msg = 'Wrong or expired otp.'
+        $('#loginstatus').modal('show');
+      }
+    }, (err) => {
+      this.msg = 'Cannot connect to server.';
+      $('#loginstatus').modal('show');
+    })
   }
 
 }

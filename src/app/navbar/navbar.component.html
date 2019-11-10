@@ -14,7 +14,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal body -->
-            <div class="modal-body">
+            <div *ngIf="forgetpass === 0" class="modal-body">
                 <form class="new-user">
                     <label for="text">Email:</label>
                     <input type="text" class="email" name="email" [(ngModel)] = "email">
@@ -27,12 +27,37 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
+
+            <div *ngIf="forgetpass === 2" class="modal-body">
+                <form class="new-user">
+                    <label for="text">OTP:</label>
+                    <input type="text" class="otp" name="otp" [(ngModel)] = "otp">
+                    <label for="text">New Password:</label>
+                    <input type="password" class="password" name="password" [(ngModel)] = "password">
+                    <label for="info"><small>Check mail for OTP</small></label>
+                </form>
+                <div class="action">
+                    <button class="btn btn-success" (click)="newp()" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+
+            <div *ngIf="forgetpass === 1" class="modal-body">
+                <form class="new-user">
+                    <label for="text">Email:</label>
+                    <input type="text" class="email" name="email" [(ngModel)] = "email">
+                </form>
+                <div class="action">
+                    <button class="btn btn-success" (click)="requestpass()" data-dismiss="modal">Request OTP</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
         
             <!-- Modal footer -->
             <div class="modal-footer" style="display: flex;flex-flow: column;justify-content: center;">
                 <p *ngIf="isRegUser">Do not have a account? <a (click)="toggleUser()">Click Here!</a></p>
-                <p *ngIf="isNewUser">Already Have an account? <a (click)="toggleUser()">Click Here!</a></p>
-                <p *ngIf="isRegUser">Forgot Password? <a (click)="forgotpassword()">Click Here!</a></p>
+                <p *ngIf="isNewUser || forgetpass!=0">Already Have an account? <a (click)="toggleUser()">Click Here!</a></p>
+                <p *ngIf="isRegUser || forgetpass!=1" >Forgot Password? <a (click)="forgetpass = 1">Click Here!</a></p>
             </div>
         
         </div>
