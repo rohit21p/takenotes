@@ -28,7 +28,7 @@ export class NotesComponent implements OnInit {
     } else {
       this.bin = false;
     }
-    this.http.get('http://localhost:3000/notes', {
+    this.http.get('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/notes', {
       withCredentials: true
     }).subscribe((data: any)=> {
       if (data.success === 'Not Logged in') {
@@ -64,7 +64,7 @@ export class NotesComponent implements OnInit {
     if (note.pin) {
       this.pnotes.splice(index, 1);
       this.unotes.push(note);
-      this.http.get('http://localhost:3000/unpin/' + note._id, {
+      this.http.get('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/unpin/' + note._id, {
         withCredentials: true
       }).subscribe((data: any)=> {
         console.log(data);
@@ -79,7 +79,7 @@ export class NotesComponent implements OnInit {
     } else {
       this.unotes.splice(index, 1);
       this.pnotes.push(note);
-      this.http.get('http://localhost:3000/pin/' + note._id, {
+      this.http.get('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/pin/' + note._id, {
         withCredentials: true
       }).subscribe((data: any)=> {
         console.log(data);
@@ -96,7 +96,7 @@ export class NotesComponent implements OnInit {
     } else {
       this.pnotes.splice(index, 1);
     }
-    this.http.get('http://localhost:3000/delete/' + note._id, {
+    this.http.get('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/delete/' + note._id, {
         withCredentials: true
       }).subscribe((data: any)=> {
         console.log(data);
@@ -112,7 +112,7 @@ export class NotesComponent implements OnInit {
 
   restore(note, index) {
     this.dnotes.splice(index, 1);
-    this.http.get('http://localhost:3000/restore/' + note._id, {
+    this.http.get('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/restore/' + note._id, {
         withCredentials: true
       }).subscribe((data: any)=> {
         console.log(data);

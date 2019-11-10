@@ -22,7 +22,7 @@ export class AddNoteComponent implements OnInit {
 
 
   create() {
-    this.http.post('http://localhost:3000/create', {
+    this.http.post('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/create', {
      title: this.title,
      desc: this.desc,
      color: this.colour

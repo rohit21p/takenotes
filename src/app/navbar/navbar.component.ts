@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/isLoggedIn', {
+    this.http.get('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/isLoggedIn', {
       withCredentials: true
     }).subscribe((data: any)=>{
       if (data.LoggedIn) {
@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
 
   log_in() {
     if (this.isNewUser) {
-      this.http.post('http://localhost:3000/signup', {
+      this.http.post('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/signup', {
       email: this.email,
       password: this.password
       }, {
@@ -70,7 +70,7 @@ export class NavbarComponent implements OnInit {
         $('#loginstatus').modal('show');
       });
     } else {
-      this.http.post('http://localhost:3000/login', {
+      this.http.post('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/login', {
       email: this.email,
       password: this.password
       }, {
@@ -92,7 +92,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.http.get('http://localhost:3000/logout', {
+    this.http.get('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/logout', {
         withCredentials: true
       }).subscribe((data: any) => {
         if (!data.loggedIn) {
@@ -113,7 +113,7 @@ export class NavbarComponent implements OnInit {
 
   requestpass() {
     this.forgetpass = 2;
-    this.http.post('http://localhost:3000/reset', JSON.stringify({
+    this.http.post('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/reset', JSON.stringify({
       email: this.email
     }), {
       withCredentials: true
@@ -126,7 +126,7 @@ export class NavbarComponent implements OnInit {
   }
 
   newp() {
-    this.http.post('http://localhost:3000/newpass', JSON.stringify({
+    this.http.post('http://ec2-13-233-98-246.ap-south-1.compute.amazonaws.com:3000/newpass', JSON.stringify({
       otp: this.otp,
       password: this.password
     }),{
