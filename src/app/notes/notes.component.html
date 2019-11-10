@@ -1,30 +1,30 @@
 <div class="notes-container" data-simplebar>
-    <div class="ncover">
+    <div *ngIf="pnotes && !bin" class="ncover">
         <h5 *ngIf="pnotes.length > 0">Pinned: </h5>
-        <div *ngIf="pnotes && !bin" class="notes-group">
+        <div class="notes-group">
             <div *ngFor="let note of pnotes; let i = index" class="note" data-simplebar>
                 <div class="note-head">
                     <h6>{{note.title}}</h6>
                     <div class="action">
                         <i (click)="pin(note, i); note.pin = !note.pin" class="fa fa-thumb-tack" aria-hidden="true"></i>
                         <i (click)="edit()" class="fa fa-pencil" aria-hidden="true"></i>
-                        <i (click)="delete()" class="fa fa-times" aria-hidden="true"></i>
+                        <i (click)="delete(note, i, 0)" class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </div>
                 <p>{{note.desc}}</p>
             </div>
         </div>
     </div>
-    <div class="ncover">
+    <div *ngIf="unotes && !bin" class="ncover">
         <h5 *ngIf="pnotes.length > 0">Unpinned: </h5>
-        <div *ngIf="unotes && !bin" class="notes-group">
+        <div class="notes-group">
             <div *ngFor="let note of unotes; let i = index" class="note" data-simplebar>
                 <div class="note-head">
                     <h6>{{note.title}}</h6>
                     <div class="action">
                         <i (click)="pin(note, i); note.pin = !note.pin" class="fa fa-thumb-tack" aria-hidden="true"></i>
                         <i (click)="edit()" class="fa fa-pencil" aria-hidden="true"></i>
-                        <i (click)="delete()" class="fa fa-times" aria-hidden="true"></i>
+                        <i (click)="delete(note, i, 1)" class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </div>
                 <p>{{note.desc}}</p>
@@ -32,12 +32,17 @@
         </div>
     </div>
     <div *ngIf="dnotes && bin" class="notes-group">
-        <div *ngFor="let note of dnotes" class="note" data-simplebar>
-            <h6>{{note.title}}</h6>
+        <div *ngFor="let note of dnotes; let i = index" class="note" data-simplebar>
+                <div class="note-head">
+                    <h6>{{note.title}}</h6>
+                    <div class="action">
+                        <i (click)="restore(note, i)" class="fa fa-undo" aria-hidden="true"></i>
+                    </div>
+                </div>
             <p>{{note.desc}}</p>
         </div>
     </div>
-    <small *ngIf="bin">If you delete any note by mistake you can find it here. Notes in bin stays untill you close the application.</small>
+    <small *ngIf="bin">If you delete any note by mistake you can find it here. Notes in bin stays untill you are logged out of the application by yourself.</small>
 </div>
 
 <div id="fetchstatus" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">

@@ -14,32 +14,7 @@ export class NotesComponent implements OnInit {
 
   pnotes = [];
   unotes = [];
-  dnotes = [
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    },
-    {
-      title: 'Rohit Panjwani',
-      desc: 'is a good man.'
-    }
-  ];
+  dnotes = [];
 
   bin = false;
   msg: any;
@@ -61,10 +36,16 @@ export class NotesComponent implements OnInit {
         $('#fetchstatus').modal('show');
       } else if (data.success) {
         data.notes.forEach(element => {
-          if(element.pin) {
-            this.pnotes.push(element);
+          if(element.deleted) {
+            if (this.bin) {
+              this.dnotes.push(element);
+            }
           } else {
-            this.unotes.push(element);
+            if (element.pin) {
+              this.pnotes.push(element);
+            } else {
+              this.unotes.push(element);
+            }
           }
         });
         console.log(this.pnotes, "p")
@@ -87,6 +68,10 @@ export class NotesComponent implements OnInit {
         withCredentials: true
       }).subscribe((data: any)=> {
         console.log(data);
+        if (data.success === 'Not Logged in') {
+          this.msg = 'Log-in First';
+          $('#fetchstatus').modal('show');
+        }
       }, (err) => {
         this.msg = 'Some Error Occured.';
         $('#fetchstatus').modal('show');
@@ -105,12 +90,44 @@ export class NotesComponent implements OnInit {
     }
   }
 
-  delete() {
-
+  delete(note, index, mode) {
+    if (mode == 1) {
+      this.unotes.splice(index, 1);
+    } else {
+      this.pnotes.splice(index, 1);
+    }
+    this.http.get('http://localhost:3000/delete/' + note._id, {
+        withCredentials: true
+      }).subscribe((data: any)=> {
+        console.log(data);
+        if (data.success === 'Not Logged in') {
+          this.msg = 'Log-in First';
+          $('#fetchstatus').modal('show');
+        }
+      }, (err) => {
+        this.msg = 'Some Error Occured.';
+        $('#fetchstatus').modal('show');
+    }); 
   }
 
   edit() {
 
+  }
+
+  restore(note, index) {
+    this.dnotes.splice(index, 1);
+    this.http.get('http://localhost:3000/restore/' + note._id, {
+        withCredentials: true
+      }).subscribe((data: any)=> {
+        console.log(data);
+        if (data.success === 'Not Logged in') {
+          this.msg = 'Log-in First';
+          $('#fetchstatus').modal('show');
+        }
+      }, (err) => {
+        this.msg = 'Some Error Occured.';
+        $('#fetchstatus').modal('show');
+    }); 
   }
 
 }
