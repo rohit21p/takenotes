@@ -51,8 +51,13 @@ export class NavbarComponent implements OnInit {
           this.msg = 'Sign-up and Login Successful.';
           $('#loginstatus').modal('show');
         } else {
-          this.msg = 'Some Error Occured.';
-          $('#loginstatus').modal('show');
+          if (data.error === 'invalid email or password shorter than 8 characters.') {
+            this.msg = 'Invalid email or Password shorter than 8 characters.';
+            $('#loginstatus').modal('show');
+          } else {
+            this.msg = 'Account with same email already exists.';
+            $('#loginstatus').modal('show');
+          }
         }
       }, (err) => {
         this.msg = 'Some Error Occured.';
@@ -70,7 +75,7 @@ export class NavbarComponent implements OnInit {
           this.msg = 'Login Successful.';
           $('#loginstatus').modal('show');
         } else {
-          this.msg = 'Some Error Occured.';
+          this.msg = 'Invalid email or password.';
           $('#loginstatus').modal('show');
         }
       }, (err) => {
@@ -129,6 +134,9 @@ export class NavbarComponent implements OnInit {
       } else if (data.status === 'Wrong or expired otp') {
         this.msg = 'Wrong or expired otp.'
         $('#loginstatus').modal('show');
+      } else if (data.status === 'Password should have atleast 8 characters') {
+        this.msg = 'Password should have atleast 8 characters.'
+        $('#loginstatus').modal('show');
       }
     }, (err) => {
       this.msg = 'Cannot connect to server.';
@@ -136,4 +144,8 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  changemodal() {
+    $('#loginstatus').modal('hide');
+    $('#myModal').modal('show');
+  }
 }

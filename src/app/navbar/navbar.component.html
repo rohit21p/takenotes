@@ -49,6 +49,7 @@
                 </form>
                 <div class="action">
                     <button class="btn btn-success" (click)="requestpass()" data-dismiss="modal">Request OTP</button>
+                    <button class="btn btn-success" (click)="forgetpass = 2" data-dismiss="modal">Enter OTP</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
@@ -64,10 +65,11 @@
     </div>
 </div>
 
-<div id="loginstatus" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div id="loginstatus" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content modal-msg" style="justify-content: center; align-items: center;padding:10px">
         <h5>{{ msg }}</h5>
+        <button *ngIf="forgetpass!=1" type="button" class="btn btn-primary" (click)="changemodal()">Ok</button>
         </div>
     </div>
 </div>
