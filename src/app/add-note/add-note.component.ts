@@ -13,6 +13,7 @@ export class AddNoteComponent implements OnInit {
   title;
   desc;
   msg;
+  colour;
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +24,8 @@ export class AddNoteComponent implements OnInit {
   create() {
     this.http.post('http://localhost:3000/create', {
      title: this.title,
-     desc: this.desc 
+     desc: this.desc,
+     color: this.colour
     }, {
       withCredentials: true
     }).subscribe((data: any)=> {
@@ -47,6 +49,20 @@ export class AddNoteComponent implements OnInit {
       this.msg = 'Some Error Occured.';
       $('#status').modal('show');
     });
+  }
+
+  color(c) {
+    console.log(c);
+    $('input').css('background-color', c);
+    $('textarea').css('background-color', c);
+    if (c!='white'&&c!='yellow') {
+      $('input').css('color', 'white');
+      $('textarea').css('color', 'white');
+    } else {
+      $('input').css('color', 'black');
+      $('textarea').css('color', 'black');
+    }
+    this.colour = c;
   }
 
 }

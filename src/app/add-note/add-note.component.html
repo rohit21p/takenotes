@@ -2,6 +2,16 @@
     <div class="note">
         <input type="text" placeholder="title" name="title" [(ngModel)]="title">
         <textarea name="" id="" cols="30" rows="10" placeholder="note"  name="desc" [(ngModel)]="desc"></textarea>
+        <div class="colors" style="align-self: flex-start">
+            <button (click)="color('blue')" class="color btn btn-primary">Color</button>
+            <button (click)="color('green')" class="color btn btn-success">Color</button>
+            <button (click)="color('red')" class="color btn btn-danger">Color</button>
+            <button (click)="color('grey')" class="color btn btn-secondary">Color</button>
+            <button (click)="color('yellow')" class="color btn btn-warning">Color</button>
+            <button (click)="color('#138496')" class="color btn btn-info">Color</button>
+            <button (click)="color('black')" class="color btn btn-dark">Color</button>
+            <button (click)="color('white')" class="color btn btn-light">Color</button>
+        </div>
         <button class="btn btn-primary" (click)="create()">Save</button>
     </div>
 </div>
