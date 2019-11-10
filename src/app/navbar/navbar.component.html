@@ -56,8 +56,8 @@
         
             <!-- Modal footer -->
             <div class="modal-footer" style="display: flex;flex-flow: column;justify-content: center;">
-                <p *ngIf="isRegUser">Do not have a account? <a (click)="toggleUser()">Click Here!</a></p>
-                <p *ngIf="isNewUser || forgetpass!=0">Already Have an account? <a (click)="toggleUser()">Click Here!</a></p>
+                <p *ngIf="isRegUser">Do not have a account? <a (click)="toggleUser(0)">Click Here!</a></p>
+                <p *ngIf="isNewUser || forgetpass!=0">Already Have an account? <a (click)="toggleUser(1)">Click Here!</a></p>
                 <p *ngIf="isRegUser || forgetpass!=1" >Forgot Password? <a (click)="forgetpass = 1">Click Here!</a></p>
             </div>
         
@@ -69,7 +69,7 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content modal-msg" style="justify-content: center; align-items: center;padding:10px">
         <h5>{{ msg }}</h5>
-        <button *ngIf="forgetpass!=1" type="button" class="btn btn-primary" (click)="changemodal()">Ok</button>
+        <button type="button" class="btn btn-primary" (click)="changemodal()">Ok</button>
         </div>
     </div>
 </div>

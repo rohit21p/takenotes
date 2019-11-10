@@ -33,9 +33,15 @@ export class NavbarComponent implements OnInit {
     })
   }
 
-  toggleUser() {
-    this.isRegUser = !this.isRegUser;
-    this.isNewUser = !this.isNewUser;
+  toggleUser(mode) {
+    if (mode == 1) {
+      this.isRegUser = true;
+      this.isNewUser = false;
+    } else {
+      this.isRegUser = false;
+      this.isNewUser = true;
+    }
+    this.forgetpass = 0;
   }
 
   log_in() {
@@ -146,6 +152,7 @@ export class NavbarComponent implements OnInit {
 
   changemodal() {
     $('#loginstatus').modal('hide');
+    if (this.forgetpass===2)
     $('#myModal').modal('show');
   }
 }
