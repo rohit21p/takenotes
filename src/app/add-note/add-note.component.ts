@@ -13,7 +13,7 @@ export class AddNoteComponent implements OnInit {
   title;
   desc;
   msg;
-  colour;
+  colour = 'white';
 
   constructor(private http: HttpClient) { }
 
